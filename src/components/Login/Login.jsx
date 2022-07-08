@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Typography from "@mui/joy/Typography";
 import TextField from "@mui/joy/TextField";
 import Button from "@mui/joy/Button";
 import Link from "@mui/joy/Link";
+import { loginUserFunction } from "../../state/context/authAction";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../state/context/authContext";
 
 const INITIAL_STATE = {
-    username: "",
     email: "",
     password: "",
 };
 
 const Login = () => {
     const [form, setForm] = useState(INITIAL_STATE);
+    const { dispatch, userLogged } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        userLogged.loggedIn && navigate("/home");
+        userLogged.error && setError(userLogged.error);
+    }, [userLogged, navigate]);
 
     const handleChangeForm = (e) => {
         const { name, value } = e.target;
@@ -20,7 +30,7 @@ const Login = () => {
 
     const submitUserForm = (e) => {
         e.preventDefault();
-        console.log(form);
+        dispatch(loginUserFunction(form, dispatch));
     };
 
     return (
@@ -30,13 +40,15 @@ const Login = () => {
             </Typography>
             <Typography level="body2">Sign in to continue</Typography>
             <TextField
-                // html input attribute
                 name="email"
                 type="email"
                 placeholder="johndoe@email.com"
-                // pass down to FormLabel as children
                 label="Email"
                 onChange={handleChangeForm}
+                sx={{
+                    mt: 2,
+                    mb: 2,
+                }}
             />
             <TextField
                 name="password"
@@ -47,7 +59,10 @@ const Login = () => {
             />
             <Button
                 sx={{
-                    mt: 1, // margin top
+                    mt: 2,
+                    mb: 2,
+                    pl: 6,
+                    pr: 6,
                 }}
                 onClick={submitUserForm}
             >
@@ -60,6 +75,7 @@ const Login = () => {
             >
                 Don't have an account?
             </Typography>
+            {error && <h6>{error}</h6>}
         </div>
     );
 };

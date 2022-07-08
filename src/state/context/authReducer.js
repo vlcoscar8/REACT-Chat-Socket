@@ -10,6 +10,7 @@ export const INITIAL_STATE = {
     loading: false,
     error: "",
     loggedIn: window.localStorage.getItem("userId") ? true : false,
+    register: false,
 };
 
 export const authReducer = (state = INITIAL_STATE, action) => {
@@ -23,6 +24,7 @@ export const authReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 error: "",
                 loggedIn: true,
+                register: false,
             };
         case actions.LOGOUT_OK:
             return {
@@ -31,6 +33,7 @@ export const authReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 error: "",
                 loggedIn: false,
+                register: false,
             };
         case actions.LOGIN_NOK:
             return {
@@ -38,7 +41,15 @@ export const authReducer = (state = INITIAL_STATE, action) => {
                 token: "",
                 loading: false,
                 error: action.payload,
-                done: false,
+                register: false,
+            };
+        case actions.REGISTER_OK:
+            return {
+                userId: "",
+                token: "",
+                loading: false,
+                error: "",
+                register: true,
             };
         default:
             return state;

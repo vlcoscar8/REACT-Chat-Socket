@@ -4,6 +4,8 @@ export const LOGIN_LOADING = "LOGIN_LOADING";
 export const LOGIN_OK = "LOGIN_OK";
 export const LOGOUT_OK = "LOGOUT_OK";
 export const LOGIN_NOK = "LOGIN_NOK";
+export const REGISTER_OK = "REGISTER_OK";
+export const REGISTER_NOK = "REGISTER_NOK";
 
 const actionLogin = () => ({
     type: LOGIN_LOADING,
@@ -23,6 +25,14 @@ const actionloginNok = (data) => ({
     payload: data,
 });
 
+const actionRegisterOk = () => ({
+    type: REGISTER_OK,
+});
+
+const actionRegisterNok = () => ({
+    type: REGISTER_NOK,
+});
+
 export const loginUserFunction = async (body, dispatch) => {
     const requestOptions = {
         method: "POST",
@@ -40,18 +50,20 @@ export const loginUserFunction = async (body, dispatch) => {
             );
             const data = await response.json();
 
-            if (data === "The email or password is incorrect") {
+            if (data === "The email & password combination is incorrect!") {
                 dispatch(actionloginNok(data));
                 return data;
             }
 
             dispatch(actionLoginOk(data));
-            window.localStorage.setItem("userId", data.userId);
-            window.localStorage.setItem("token", data.token);
+            window.localStorage.setItem("userId", data.data.userId);
+            window.localStorage.setItem("token", data.data.token);
             return data;
         }
 
-        await fetch(`${environment.API_URL}/auth/register`, requestOptions);
+        await fetch(`${environment.API_URL}/auth/register`, requestOptions)
+            .then(() => dispatch(actionRegisterOk()))
+            .finally(() => dispatch(actionRegisterNok()));
     } catch (error) {
         console.log(error);
         dispatch(actionloginNok());
