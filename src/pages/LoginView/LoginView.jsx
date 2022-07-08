@@ -1,11 +1,8 @@
 import React from "react";
+import Login from "../../components/Login/Login";
 
 const LoginView = () => {
-    return (
-        <div>
-            <h1>Hello</h1>
-        </div>
-    );
+    return <Login />;
 };
 
 export default LoginView;
