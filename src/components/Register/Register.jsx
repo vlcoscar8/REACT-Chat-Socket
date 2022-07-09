@@ -33,10 +33,12 @@ const Register = () => {
     };
     return (
         <div>
-            <Typography level="h4" component="h1">
+            <Typography level="h4" component="h1" sx={{ fontSize: 30 }}>
                 <b>Welcome!</b>
             </Typography>
-            <Typography level="body2">Sign up to continue</Typography>
+            <Typography level="body2" sx={{ fontSize: 20 }}>
+                Sign up to continue
+            </Typography>
             <TextField
                 name="username"
                 type="text"
@@ -49,11 +51,9 @@ const Register = () => {
                 }}
             />
             <TextField
-                // html input attribute
                 name="email"
                 type="email"
                 placeholder="johndoe@email.com"
-                // pass down to FormLabel as children
                 label="Email"
                 onChange={handleChangeForm}
                 sx={{
@@ -70,15 +70,15 @@ const Register = () => {
                 sx={{
                     mt: 2,
                     mb: 2,
+                    fontSize: 18,
                 }}
             />
 
             <Button
                 sx={{
-                    mt: 2,
-                    mb: 2,
-                    pl: 6,
-                    pr: 6,
+                    m: "1rem 0",
+                    p: "1rem 3rem 1rem 3rem",
+                    fontSize: 18,
                 }}
                 onClick={submitUserForm}
             >
@@ -86,7 +86,7 @@ const Register = () => {
             </Button>
             <Typography
                 endDecorator={<Link href="/">Back to logIn view</Link>}
-                fontSize="sm"
+                fontSize="18px"
                 sx={{ alignSelf: "center" }}
             ></Typography>
         </div>

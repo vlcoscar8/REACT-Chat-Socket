@@ -34,11 +34,13 @@ const Login = () => {
     };
 
     return (
-        <div>
-            <Typography level="h4" component="h1">
+        <div className="form">
+            <Typography level="h4" component="h1" sx={{ fontSize: 30 }}>
                 <b>Welcome!</b>
             </Typography>
-            <Typography level="body2">Sign in to continue</Typography>
+            <Typography level="body2" sx={{ fontSize: 20 }}>
+                Sign in to continue
+            </Typography>
             <TextField
                 name="email"
                 type="email"
@@ -59,10 +61,9 @@ const Login = () => {
             />
             <Button
                 sx={{
-                    mt: 2,
-                    mb: 2,
-                    pl: 6,
-                    pr: 6,
+                    m: "1rem 0",
+                    p: "1rem 3rem 1rem 3rem",
+                    fontSize: 18,
                 }}
                 onClick={submitUserForm}
             >
@@ -70,7 +71,7 @@ const Login = () => {
             </Button>
             <Typography
                 endDecorator={<Link href="/register">Sign up</Link>}
-                fontSize="sm"
+                fontSize="18px"
                 sx={{ alignSelf: "center" }}
             >
                 Don't have an account?
