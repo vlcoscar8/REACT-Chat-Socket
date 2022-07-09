@@ -3,11 +3,12 @@ import RequireAuth from "./components/RequireAuth/RequireAuth";
 import Home from "./pages/Home/Home";
 import LoginView from "./pages/LoginView/LoginView";
 import { AuthProvider } from "./state/context/authContext";
-import { CssVarsProvider } from "@mui/joy/styles";
 import RegisterView from "./pages/RegisterView/RegisterView";
 import Header from "./components/Header/Header";
-import { createTheme, ThemeProvider } from "@mui/material";
-import { Container } from "@material-ui/core";
+import { Container, createTheme, ThemeProvider } from "@mui/material";
+// import { Provider } from "react-redux";
+// import { store } from "./state/redux/store";
+import { CssVarsProvider } from "@mui/joy/styles";
 
 const theme = createTheme();
 
@@ -24,6 +25,7 @@ function App() {
     return (
         <>
             <AuthProvider>
+                {/* <Provider store={store}> */}
                 <ThemeProvider theme={theme}>
                     <CssVarsProvider>
                         <Header />
@@ -56,6 +58,7 @@ function App() {
                         </Container>
                     </CssVarsProvider>
                 </ThemeProvider>
+                {/* </Provider> */}
             </AuthProvider>
         </>
     );

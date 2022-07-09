@@ -1,6 +1,6 @@
 import React from "react";
-import Login from "../../components/Login/Login";
 import Sheet from "@mui/joy/Sheet";
+import Login from "../../components/Login/Login";
 import { styles } from "../RegisterView/RegisterView";
 
 const LoginView = () => {

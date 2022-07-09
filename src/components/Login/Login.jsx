@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import Typography from "@mui/joy/Typography";
-import TextField from "@mui/joy/TextField";
-import Button from "@mui/joy/Button";
-import Link from "@mui/joy/Link";
 import { loginUserFunction } from "../../state/context/authAction";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../state/context/authContext";
+import { Link } from "@mui/material";
+import { Button, Typography, TextField } from "@mui/joy";
 
 const INITIAL_STATE = {
     email: "",

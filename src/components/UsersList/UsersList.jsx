@@ -1,9 +1,8 @@
-import { Typography } from "@mui/joy";
 import * as React from "react";
 import { environment } from "../../environment/environment";
 import UserButton from "../UserButton/UserButton";
-import { Toolbar } from "@material-ui/core";
-import { Grid } from "@mui/material";
+import { Grid, Toolbar, Typography } from "@mui/material";
+import { Typography } from "@mui/joy";
 
 const UsersList = () => {
     const [users, setUsers] = React.useState();

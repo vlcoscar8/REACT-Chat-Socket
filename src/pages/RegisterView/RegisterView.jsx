@@ -1,5 +1,4 @@
 import React from "react";
-
 import Sheet from "@mui/joy/Sheet";
 import Register from "../../components/Register/Register";
 

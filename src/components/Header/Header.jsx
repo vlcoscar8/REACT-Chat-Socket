@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import { logoutUserFunction } from "../../state/context/authAction";
 import { AuthContext } from "../../state/context/authContext";
-import { AppBar, Toolbar } from "@material-ui/core";
-import { Typography } from "@mui/joy";
-import Button from "@mui/joy/Button";
+import { Box, Grid } from "@mui/material";
+import { Button, Typography } from "@mui/joy";
 
 const Header = () => {
     const { dispatch, userLogged } = useContext(AuthContext);
@@ -15,19 +14,40 @@ const Header = () => {
     return (
         <>
             {userLogged.loggedIn && (
-                <AppBar position="relative">
-                    <Toolbar>
-                        <Typography
-                            component="div"
-                            sx={{
-                                flexGrow: 1,
-                                color: "white",
-                                fontSize: "1rem",
-                            }}
+                <Box sx={{ flexGrow: 1 }}>
+                    <Grid
+                        container
+                        spacing={2}
+                        direction="row"
+                        alignItems="center"
+                        justifyContent="space-between"
+                        style={{
+                            minHeight: "5vh",
+                            backgroundColor: "blue",
+                            position: "fixed",
+                        }}
+                    >
+                        <Grid
+                            item
+                            xs
+                            style={{ textAlign: "left", marginLeft: "2rem" }}
                         >
-                            React Chat App
-                        </Typography>
-                        <div>
+                            <Typography
+                                component="div"
+                                sx={{
+                                    flexGrow: 1,
+                                    color: "white",
+                                    fontSize: "1rem",
+                                }}
+                            >
+                                React Chat App
+                            </Typography>
+                        </Grid>
+                        <Grid
+                            item
+                            xs
+                            style={{ textAlign: "right", marginRight: "2rem" }}
+                        >
                             <Button
                                 onClick={logout}
                                 variant="contained"
@@ -37,7 +57,6 @@ const Header = () => {
                                     fontSize: "1rem",
                                     m: "1rem 0",
                                     p: "1rem 3rem 1rem 3rem",
-                                    color: "white",
                                     backgroundColor: "#3a3b50",
                                     "&:hover": {
                                         color: "black",
@@ -47,9 +66,9 @@ const Header = () => {
                             >
                                 Logout
                             </Button>
-                        </div>
-                    </Toolbar>
-                </AppBar>
+                        </Grid>
+                    </Grid>
+                </Box>
             )}
         </>
     );

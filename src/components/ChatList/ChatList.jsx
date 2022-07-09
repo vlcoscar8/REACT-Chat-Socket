@@ -15,13 +15,13 @@ const ChatList = () => {
         <Grid
             container
             spacing={0}
-            direction="flex"
+            direction="row"
             alignItems="center"
             justifyContent="center"
             gap="1rem"
             style={{ minHeight: "8vh" }}
         >
-            {chats.length > 0 ? (
+            {chats && chats.length > 0 ? (
                 chats.map((chat) => <ChatCard chat={chat} />)
             ) : (
                 <p>Not chats created yet</p>

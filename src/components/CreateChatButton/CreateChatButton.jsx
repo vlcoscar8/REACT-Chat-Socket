@@ -1,9 +1,20 @@
-import React from "react";
-import Button from "@mui/joy/Button";
+import { Button } from "@mui/joy";
+import React, { useContext } from "react";
+import { environment } from "../../environment/environment";
+import { AuthContext } from "../../state/context/authContext";
 
 const CreateChatButton = () => {
+    const { userLogged } = useContext(AuthContext);
+
+    const createChat = async () => {
+        await fetch(`${environment.API_URL}/chat/create/${userLogged.userId}`)
+            .then((res) => res.json())
+            .then((res) => console.log(res));
+    };
+
     return (
         <Button
+            onClick={createChat}
             sx={{
                 backgroundColor: "white",
                 color: "#054DA7",
