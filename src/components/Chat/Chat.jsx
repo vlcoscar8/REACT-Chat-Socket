@@ -1,19 +1,26 @@
 import { Grid } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../state/context/authContext";
 import ChatTitle from "../ChatTitle/ChatTitle";
+import UsersChat from "../UsersChat/UsersChat";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { setReduxStateActiveChat } from "../../state/redux/actions/chatActions";
 
 const Chat = () => {
-    const [chat, setChat] = useState();
     const { userData } = useContext(AuthContext);
+    const dispatch = useDispatch();
+    const { chatActive } = useSelector((state) => state.chats);
 
     useEffect(() => {
-        userData && setChat(userData.chats[0]);
+        userData &&
+            userData.chats.length > 0 &&
+            dispatch(setReduxStateActiveChat(userData.chats[0]));
     }, [userData]);
 
     return (
         <>
-            {chat && (
+            {chatActive && (
                 <Grid
                     container
                     spacing={0}
@@ -26,7 +33,8 @@ const Chat = () => {
                         height: "88vh",
                     }}
                 >
-                    <ChatTitle chat={chat} />
+                    <ChatTitle chat={chatActive} />
+                    <UsersChat chat={chatActive} />
                 </Grid>
             )}
         </>

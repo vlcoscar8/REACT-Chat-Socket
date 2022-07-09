@@ -29,7 +29,9 @@ const CreateChatButton = () => {
 
     const checkLength = () => {
         const chatList =
-            chats.length > 0 ? userData.chats.concat(chats) : userData.chats;
+            chats && chats.length > 0
+                ? userData.chats.concat(chats)
+                : userData.chats;
 
         chatList && chatList.length >= 2 && setError(true);
     };

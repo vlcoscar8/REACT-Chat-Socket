@@ -3,12 +3,18 @@ import { logoutUserFunction } from "../../state/context/authAction";
 import { AuthContext } from "../../state/context/authContext";
 import { Box, Grid } from "@mui/material";
 import { Button, Typography } from "@mui/joy";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { setReduxStateDefaultChat } from "../../state/redux/actions/chatActions";
+import { setReduxStateDefaultUser } from "../../state/redux/actions/usersActions";
 
 const Header = () => {
     const { dispatch, userLogged } = useContext(AuthContext);
+    const reduxDispatch = useDispatch();
 
     const logout = () => {
         dispatch(logoutUserFunction(dispatch));
+        reduxDispatch(setReduxStateDefaultChat());
+        reduxDispatch(setReduxStateDefaultUser());
     };
 
     return (

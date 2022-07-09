@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState();
 
     useEffect(() => {
+        setUserData(null);
         userLogged.loggedIn &&
             fetch(`${environment.API_URL}/user/detail/${userLogged.userId}`)
                 .then((res) => res.json())

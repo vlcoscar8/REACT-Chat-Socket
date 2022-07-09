@@ -75,7 +75,9 @@ export const logoutUserFunction = async (dispatch) => {
     dispatch(actionLogin());
 
     try {
-        const response = await fetch(`${environment.API_URL}/auth/logout`);
+        const response = await fetch(`${environment.API_URL}/auth/logout`, {
+            method: "POST",
+        });
         const data = await response.json();
         dispatch(actionLogoutOk());
         localStorage.clear();

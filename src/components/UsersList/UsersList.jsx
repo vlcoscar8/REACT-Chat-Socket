@@ -1,13 +1,13 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { environment } from "../../environment/environment";
 import UserButton from "../UserButton/UserButton";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/joy";
 
 const UsersList = () => {
-    const [users, setUsers] = React.useState();
+    const [users, setUsers] = useState();
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetch(`${environment.API_URL}/user/list`)
             .then((res) => res.json())
             .then((res) => setUsers(res));

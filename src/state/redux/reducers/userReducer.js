@@ -20,6 +20,8 @@ export default function userReducer(state = INITIAL_STATE, action) {
                     (element) => element !== action.payload
                 ),
             };
+        case actions.DEFAULT_USER:
+            return INITIAL_STATE;
         default:
             return state;
     }

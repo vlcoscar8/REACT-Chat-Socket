@@ -10,7 +10,7 @@ const ChatList = () => {
     const { chats } = useSelector((state) => state.chats);
 
     useEffect(() => {
-        if (userData) {
+        if (userData && chats) {
             const chatList =
                 chats.length > 0
                     ? userData.chats.concat(chats)
