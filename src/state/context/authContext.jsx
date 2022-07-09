@@ -10,9 +10,7 @@ export const AuthContext = React.createContext();
 // Context
 export const AuthProvider = ({ children }) => {
     const [userLogged, dispatch] = useReducer(authReducer, INITIAL_STATE);
-    const [userData, setUserData] = useState([]);
-
-    console.log(userData);
+    const [userData, setUserData] = useState();
 
     useEffect(() => {
         userLogged.loggedIn &&

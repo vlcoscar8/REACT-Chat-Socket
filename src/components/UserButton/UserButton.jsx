@@ -8,6 +8,7 @@ const UserButton = ({ user }) => {
             sx={{
                 color: "white",
                 fontSize: "0.8rem",
+                width: "100%",
                 m: "0 1rem",
                 p: "1rem 1.5rem 1rem 1.5rem",
             }}

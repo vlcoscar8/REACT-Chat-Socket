@@ -10,20 +10,23 @@ const ChatList = () => {
     const { chats } = useSelector((state) => state.chats);
 
     useEffect(() => {
-        const chatList =
-            chats.length > 0 ? userData.chats.concat(chats) : userData.chats;
-        setChatList(chatList);
+        if (userData) {
+            const chatList =
+                chats.length > 0
+                    ? userData.chats.concat(chats)
+                    : userData.chats;
+            setChatList(chatList);
+        }
     }, [chats, userData]);
 
     return (
         <Grid
             container
             spacing={0}
-            direction="row"
+            direction="column"
             alignItems="center"
             justifyContent="center"
             gap="1rem"
-            style={{ minHeight: "8vh" }}
         >
             {chatList && chatList.length > 0 ? (
                 chatList.map((chat) => <ChatCard chat={chat} key={chat.id} />)

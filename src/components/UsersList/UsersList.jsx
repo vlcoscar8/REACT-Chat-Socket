@@ -1,7 +1,7 @@
 import * as React from "react";
 import { environment } from "../../environment/environment";
 import UserButton from "../UserButton/UserButton";
-import { Grid, Toolbar, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Typography } from "@mui/joy";
 
 const UsersList = () => {
@@ -23,14 +23,13 @@ const UsersList = () => {
                     alignItems="center"
                     justifyContent="start"
                     gap="1rem"
-                    style={{ minHeight: "10vh" }}
+                    style={{ width: "10%" }}
                 >
-                    <Typography>User List</Typography>
-                    <Toolbar>
-                        {users.map((user) => (
-                            <UserButton user={user} key={user.email} />
-                        ))}
-                    </Toolbar>
+                    <Typography>Users List</Typography>
+
+                    {users.map((user) => (
+                        <UserButton user={user} key={user.email} />
+                    ))}
                 </Grid>
             )}
         </>

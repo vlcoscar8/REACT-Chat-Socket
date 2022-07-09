@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { loginUserFunction } from "../../state/context/authAction";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../state/context/authContext";
 import { Button, Typography, TextField } from "@mui/joy";
+import { Link } from "@mui/material";
 
 const INITIAL_STATE = {
     username: "",
