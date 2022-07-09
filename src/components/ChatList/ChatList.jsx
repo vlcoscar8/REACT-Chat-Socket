@@ -1,15 +1,19 @@
 import { Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ChatCard from "../ChatCard/ChatCard";
 import { useSelector } from "react-redux/es/exports";
+import { AuthContext } from "../../state/context/authContext";
 
 const ChatList = () => {
     const [chatList, setChatList] = useState();
+    const { userData } = useContext(AuthContext);
     const { chats } = useSelector((state) => state.chats);
 
     useEffect(() => {
-        setChatList(chats);
-    }, [chats]);
+        const chatList =
+            chats.length > 0 ? userData.chats.concat(chats) : userData.chats;
+        setChatList(chatList);
+    }, [chats, userData]);
 
     return (
         <Grid

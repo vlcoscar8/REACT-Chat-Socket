@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [userLogged, dispatch] = useReducer(authReducer, INITIAL_STATE);
     const [userData, setUserData] = useState([]);
 
-    console.log(userLogged);
+    console.log(userData);
 
     useEffect(() => {
         userLogged.loggedIn &&

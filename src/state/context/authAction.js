@@ -55,7 +55,7 @@ export const loginUserFunction = async (body, dispatch) => {
                 return data;
             }
 
-            dispatch(actionLoginOk(data));
+            dispatch(actionLoginOk(data.data));
             window.localStorage.setItem("userId", data.data.userId);
             window.localStorage.setItem("token", data.data.token);
             return data;
@@ -77,7 +77,6 @@ export const logoutUserFunction = async (dispatch) => {
     try {
         const response = await fetch(`${environment.API_URL}/auth/logout`);
         const data = await response.json();
-
         dispatch(actionLogoutOk());
         localStorage.clear();
 
