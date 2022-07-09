@@ -1,15 +1,25 @@
 import { Button } from "@mui/joy";
 import React, { useContext } from "react";
+import { useDispatch } from "react-redux";
 import { environment } from "../../environment/environment";
 import { AuthContext } from "../../state/context/authContext";
+import { setReduxStatePushChat } from "../../state/redux/actions/chatActions";
 
 const CreateChatButton = () => {
     const { userLogged } = useContext(AuthContext);
+    const dispatch = useDispatch();
 
     const createChat = async () => {
-        await fetch(`${environment.API_URL}/chat/create/${userLogged.userId}`)
-            .then((res) => res.json())
-            .then((res) => console.log(res));
+        const response = await fetch(
+            `${environment.API_URL}/chat/create/${userLogged.userId}`,
+            {
+                method: "POST",
+            }
+        );
+
+        const data = await response.json();
+
+        dispatch(setReduxStatePushChat(data));
     };
 
     return (

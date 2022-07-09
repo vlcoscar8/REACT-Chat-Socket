@@ -24,7 +24,6 @@ const Header = () => {
                         style={{
                             minHeight: "5vh",
                             backgroundColor: "blue",
-                            position: "fixed",
                         }}
                     >
                         <Grid

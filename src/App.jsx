@@ -6,8 +6,8 @@ import { AuthProvider } from "./state/context/authContext";
 import RegisterView from "./pages/RegisterView/RegisterView";
 import Header from "./components/Header/Header";
 import { Container, createTheme, ThemeProvider } from "@mui/material";
-// import { Provider } from "react-redux";
-// import { store } from "./state/redux/store";
+import { Provider } from "react-redux";
+import { store } from "./state/redux/store";
 import { CssVarsProvider } from "@mui/joy/styles";
 
 const theme = createTheme();
@@ -24,42 +24,42 @@ theme.typography.h3 = {
 function App() {
     return (
         <>
-            <AuthProvider>
-                {/* <Provider store={store}> */}
-                <ThemeProvider theme={theme}>
-                    <CssVarsProvider>
-                        <Header />
-                        <Container>
-                            <Router>
-                                <main>
-                                    <Routes>
-                                        <Route
-                                            exact
-                                            path="/"
-                                            element={<LoginView />}
-                                        />
-                                        <Route
-                                            exact
-                                            path="/register"
-                                            element={<RegisterView />}
-                                        />
-                                        <Route
-                                            exact
-                                            path="/home"
-                                            element={
-                                                <RequireAuth>
-                                                    <Home />
-                                                </RequireAuth>
-                                            }
-                                        />
-                                    </Routes>
-                                </main>
-                            </Router>
-                        </Container>
-                    </CssVarsProvider>
-                </ThemeProvider>
-                {/* </Provider> */}
-            </AuthProvider>
+            <Provider store={store}>
+                <AuthProvider>
+                    <ThemeProvider theme={theme}>
+                        <CssVarsProvider>
+                            <Header />
+                            <Container>
+                                <Router>
+                                    <main>
+                                        <Routes>
+                                            <Route
+                                                exact
+                                                path="/"
+                                                element={<LoginView />}
+                                            />
+                                            <Route
+                                                exact
+                                                path="/register"
+                                                element={<RegisterView />}
+                                            />
+                                            <Route
+                                                exact
+                                                path="/home"
+                                                element={
+                                                    <RequireAuth>
+                                                        <Home />
+                                                    </RequireAuth>
+                                                }
+                                            />
+                                        </Routes>
+                                    </main>
+                                </Router>
+                            </Container>
+                        </CssVarsProvider>
+                    </ThemeProvider>
+                </AuthProvider>
+            </Provider>
         </>
     );
 }

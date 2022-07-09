@@ -1,15 +1,15 @@
 import { Grid } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../state/context/authContext";
+import React, { useEffect, useState } from "react";
 import ChatCard from "../ChatCard/ChatCard";
+import { useSelector } from "react-redux/es/exports";
 
 const ChatList = () => {
-    const [chats, setChats] = useState();
-    const { userData } = useContext(AuthContext);
+    const [chatList, setChatList] = useState();
+    const { chats } = useSelector((state) => state.chats);
 
     useEffect(() => {
-        setChats(userData.chats);
-    }, [userData]);
+        setChatList(chats);
+    }, [chats]);
 
     return (
         <Grid
@@ -21,8 +21,8 @@ const ChatList = () => {
             gap="1rem"
             style={{ minHeight: "8vh" }}
         >
-            {chats && chats.length > 0 ? (
-                chats.map((chat) => <ChatCard chat={chat} />)
+            {chatList && chatList.length > 0 ? (
+                chatList.map((chat) => <ChatCard chat={chat} key={chat.id} />)
             ) : (
                 <p>Not chats created yet</p>
             )}
