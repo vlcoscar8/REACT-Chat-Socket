@@ -12,11 +12,8 @@ const UserButton = ({ user }) => {
     const [included, setIncluded] = useState(false);
 
     useEffect(() => {
-        users.forEach((el) => {
-            if (el.username === user.username) {
-                setIncluded(true);
-            }
-        });
+        const sameUser = users.find((el) => el.username === user.username);
+        sameUser ? setIncluded(true) : setIncluded(false);
     }, [users]);
 
     const addUserToChat = () => {

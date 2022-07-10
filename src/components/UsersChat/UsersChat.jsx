@@ -1,5 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { setReduxStateChatUsers } from "../../state/redux/actions/usersActions";
+import {
+    setReduxStateChatUsers,
+    setReduxStatePushUserToChat,
+} from "../../state/redux/actions/usersActions";
 import User from "../User/User";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
@@ -10,10 +13,13 @@ const UsersChat = ({ chat }) => {
     const dispatch = useDispatch();
     const { users } = useSelector((state) => state.users);
     const { userData } = useContext(AuthContext);
+    const { chatActive } = useSelector((state) => state.chats);
 
-    useEffect(() => {
-        dispatch(setReduxStateChatUsers(chat.users));
-    }, [userData]);
+    // useEffect(() => {
+    //     dispatch(setReduxStateChatUsers(chat.users));
+    // }, [userData, chat]);
+
+    console.log(users, 3);
 
     return (
         <>
