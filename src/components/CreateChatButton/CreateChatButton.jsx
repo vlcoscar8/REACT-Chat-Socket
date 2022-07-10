@@ -4,7 +4,10 @@ import { useDispatch } from "react-redux";
 import { environment } from "../../environment/environment";
 import { AuthContext } from "../../state/context/authContext";
 import { useSelector } from "react-redux/es/exports";
-import { setReduxStatePushChat } from "../../state/redux/actions/chatActions";
+import {
+    setReduxStateActiveChat,
+    setReduxStatePushChat,
+} from "../../state/redux/actions/chatActions";
 
 const CreateChatButton = () => {
     const { userLogged, userData } = useContext(AuthContext);
@@ -24,6 +27,10 @@ const CreateChatButton = () => {
 
         dispatch(setReduxStatePushChat(data));
 
+        if (chats < 1) {
+            dispatch(setReduxStateActiveChat(data));
+        }
+
         checkLength();
     };
 
@@ -42,37 +49,23 @@ const CreateChatButton = () => {
 
     return (
         <>
-            {!error ? (
-                <Button
-                    onClick={createChat}
-                    sx={{
-                        backgroundColor: "white",
-                        color: "#054DA7",
-                        border: "2px solid #054DA7",
-                        mt: "2rem",
-                        width: "100%",
-                        "&:hover": {
-                            color: "white",
-                            backgroundColor: "#054DA7",
-                        },
-                    }}
-                >
-                    Create Chat
-                </Button>
-            ) : (
-                <Button
-                    sx={{
-                        backgroundColor: "white",
-                        color: "#054DA7",
-                        border: "2px solid #054DA7",
-                        mt: "2rem",
-                        width: "100%",
-                    }}
-                    disabled
-                >
-                    Maximum 3 chats
-                </Button>
-            )}
+            <Button
+                onClick={createChat}
+                sx={{
+                    backgroundColor: "white",
+                    color: "#054DA7",
+                    border: "2px solid #054DA7",
+                    mt: "2rem",
+                    width: "100%",
+                    "&:hover": {
+                        color: "white",
+                        backgroundColor: "#054DA7",
+                    },
+                }}
+                disabled={error ? true : false}
+            >
+                {error ? "Maximum 3 Groups" : "Create Group"}
+            </Button>
         </>
     );
 };

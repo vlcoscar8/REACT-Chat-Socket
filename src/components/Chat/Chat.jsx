@@ -13,9 +13,7 @@ const Chat = () => {
     const { chatActive } = useSelector((state) => state.chats);
 
     useEffect(() => {
-        userData &&
-            userData.chats.length > 0 &&
-            dispatch(setReduxStateActiveChat(userData.chats[0]));
+        userData && dispatch(setReduxStateActiveChat(userData.chats[0]));
     }, [userData]);
 
     return (
