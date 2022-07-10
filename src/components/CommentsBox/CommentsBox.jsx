@@ -13,8 +13,9 @@ const CommentsBox = () => {
             justifyContent="space-between"
             gap="1rem"
             style={{
-                padding: "2rem",
+                padding: "1rem",
                 border: "1px solid blue",
+                height: "84%",
             }}
         >
             <Comments />

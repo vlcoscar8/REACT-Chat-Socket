@@ -1,11 +1,12 @@
 import { Grid } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Comment from "../Comment/Comment";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useChatDetail } from "../../customHooks/useChatDetail";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { setReduxStateGetComments } from "../../state/redux/actions/commentsActions";
 import shortid from "shortid";
+import { CommentsDisabledTwoTone } from "@mui/icons-material";
 
 const Comments = () => {
     const { chatActive } = useSelector((state) => state.chatActive);
@@ -13,12 +14,19 @@ const Comments = () => {
     const chatDetail = useChatDetail(chatActive);
     const dispatch = useDispatch();
 
+    const scrollWindow = useRef(null);
+
     useEffect(() => {
         chatDetail && dispatch(setReduxStateGetComments(chatDetail.comments));
     }, [chatDetail]);
 
+    useEffect(() => {
+        scrollWindow.current.scrollTop = scrollWindow.current.scrollHeight;
+    }, [comments]);
+
     return (
         <Grid
+            ref={scrollWindow}
             container
             spacing={0}
             direction="column"
@@ -27,7 +35,7 @@ const Comments = () => {
             gap="2rem"
             style={{
                 width: "100%",
-                height: "40vh",
+                height: "55vh",
                 padding: "2rem",
                 border: "1px solid blue",
                 overflowY: "scroll",

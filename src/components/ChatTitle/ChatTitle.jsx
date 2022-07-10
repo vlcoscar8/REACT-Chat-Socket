@@ -14,6 +14,8 @@ const ChatTitle = ({ chat }) => {
                         textAlign: "center",
                         padding: "1rem",
                         boxSizing: "border-box",
+                        height: "3rem",
+                        marginTop: "-2rem",
                     }}
                 >
                     {chatDetail.owner[0].username.toUpperCase()}'S CHAT

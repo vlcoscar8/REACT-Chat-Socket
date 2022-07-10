@@ -35,7 +35,7 @@ const Chat = () => {
                     gap="1rem"
                     style={{
                         width: "60%",
-                        height: "88vh",
+                        height: "90vh",
                         padding: "2rem",
                     }}
                 >
