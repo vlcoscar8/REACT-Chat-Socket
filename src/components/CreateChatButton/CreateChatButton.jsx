@@ -52,12 +52,16 @@ const CreateChatButton = () => {
                 sx={{
                     backgroundColor: "white",
                     color: "#054DA7",
-                    border: "2px solid #054DA7",
                     mt: "2rem",
                     width: "100%",
                     "&:hover": {
                         color: "white",
                         backgroundColor: "#054DA7",
+                    },
+
+                    "&:disabled": {
+                        backgroundColor: "#EED588",
+                        color: "white",
                     },
                 }}
                 disabled={error ? true : false}

@@ -13,7 +13,7 @@ const Home = () => {
             alignItems="start"
             justifyContent="space-between"
             gap="1rem"
-            style={{ minHeight: "85vh" }}
+            style={{ minHeight: "85vh", width: "80vw" }}
         >
             <Chats />
             <Chat />

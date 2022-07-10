@@ -77,6 +77,11 @@ const Register = () => {
                     m: "1rem 0",
                     p: "1rem 3rem 1rem 3rem",
                     fontSize: 18,
+                    backgroundColor: "#EF5E41",
+
+                    "&:hover": {
+                        backgroundColor: "#FC9E4F",
+                    },
                 }}
                 onClick={submitUserForm}
             >

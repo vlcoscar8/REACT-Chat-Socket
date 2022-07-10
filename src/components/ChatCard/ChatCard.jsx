@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useChatDetail } from "../../customHooks/useChatDetail";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { setReduxStateActiveChat } from "../../state/redux/actions/chatActiveActions";
@@ -8,9 +8,12 @@ import {
     setReduxStateDefaultUser,
     setReduxStatePushUserToChat,
 } from "../../state/redux/actions/usersActions";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const ChatCard = ({ chat }) => {
     const chatDetail = useChatDetail(chat);
+    const { chatActive } = useSelector((state) => state.chatActive);
+    const [active, setActive] = useState();
     const dispatch = useDispatch();
 
     const changeActiveChat = () => {
@@ -26,6 +29,12 @@ const ChatCard = ({ chat }) => {
         }
     };
 
+    useEffect(() => {
+        chatActive && chatActive.id === chat.id
+            ? setActive(true)
+            : setActive(false);
+    }, [chatActive]);
+
     return (
         <>
             {chatDetail && (
@@ -33,24 +42,29 @@ const ChatCard = ({ chat }) => {
                     onClick={changeActiveChat}
                     container
                     spacing={0}
-                    direction="column"
+                    direction="row"
                     alignItems="center"
                     justifyContent="center"
                     gap="1rem"
-                    style={{
+                    sx={{
                         minHeight: "8vh",
-                        border: "1px solid blue",
                         marginTop: "2rem",
-                        padding: "1rem 0",
-                        borderRadius: "6px",
+                        padding: "1rem 0.5rem",
+                        borderRadius: "0.2rem",
                         cursor: "pointer",
+                        backgroundColor: active ? " #FC9E4F" : " #475B6A",
+                        "&:hover": {
+                            backgroundColor: "#455D90",
+                            transition: "all 0.5s ease",
+                        },
                     }}
                 >
-                    <Typography>Chat</Typography>
-                    <Typography>
-                        Owner: {chatDetail.owner[0].username}
+                    <Typography sx={{ color: "white" }}>
+                        {chatDetail.owner[0].username.toUpperCase()}
                     </Typography>
-                    <Typography>Users: {chatDetail.users.length}</Typography>
+                    <Typography sx={{ color: "white" }}>
+                        Users: {chatDetail.users.length}
+                    </Typography>
                 </Grid>
             )}
         </>

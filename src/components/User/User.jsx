@@ -30,7 +30,20 @@ const User = ({ user }) => {
             dispatch(setReduxStateDeleteUserFromChat(user));
         }
     };
-    return <Button onClick={removeUser}>{user.username}</Button>;
+    return (
+        <Button
+            sx={{
+                backgroundColor: "#EF5E41",
+                borderRadius: "2px",
+                "&:hover": {
+                    backgroundColor: "#F0A370",
+                },
+            }}
+            onClick={removeUser}
+        >
+            {(user.username[0] + user.username[1]).toUpperCase()}
+        </Button>
+    );
 };
 
 export default User;

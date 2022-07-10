@@ -21,8 +21,18 @@ const Comment = ({ comment }) => {
                     justifyContent="center"
                     gap="1rem"
                 >
-                    <Typography sx={{ marginBottom: "-0.5rem" }}>
-                        {comment.from[0].username}
+                    <Typography
+                        sx={{
+                            marginBottom: "-0.5rem",
+                            padding: "0.3rem",
+                            backgroundColor: "#F0A370",
+                            color: "white",
+                        }}
+                    >
+                        {(
+                            comment.from[0].username[0] +
+                            comment.from[0].username[1]
+                        ).toUpperCase()}
                     </Typography>
                     <Typography
                         sx={{
@@ -31,9 +41,9 @@ const Comment = ({ comment }) => {
                             borderRadius: "0.5rem",
                             backgroundColor:
                                 comment.from[0].username === userData.username
-                                    ? "green"
-                                    : "grey",
-                            color: "white",
+                                    ? "#B5EF8A"
+                                    : "#B6CCA1",
+                            color: "black",
                         }}
                     >
                         {comment.content}

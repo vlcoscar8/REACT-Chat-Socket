@@ -50,6 +50,12 @@ const CommentForm = () => {
             alignItems="center"
             justifyContent="space-between"
             gap="1rem"
+            sx={{
+                backgroundColor: "#E7D196",
+                width: "100%",
+                padding: "1rem",
+                boxSizing: "border-box",
+            }}
         >
             <TextField
                 name="content"
@@ -57,9 +63,28 @@ const CommentForm = () => {
                 placeholder="Your message"
                 value={form.content}
                 onChange={handleChangeForm}
-                sx={{ width: "30vw" }}
+                sx={{
+                    width: "82%",
+                    borderRadius: "7px",
+
+                    "&:focus": {
+                        outline: "none",
+                    },
+                }}
             />
-            <Button onClick={submitUserForm} disabled={disabled}>
+            <Button
+                sx={{
+                    backgroundColor: "#EF5E41",
+                    borderRadius: "7px",
+                    width: "15%",
+
+                    "&:hover": {
+                        backgroundColor: "#FF5825",
+                    },
+                }}
+                onClick={submitUserForm}
+                disabled={disabled}
+            >
                 Send
             </Button>
         </Grid>

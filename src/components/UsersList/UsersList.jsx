@@ -23,7 +23,7 @@ const UsersList = () => {
                     alignItems="center"
                     justifyContent="start"
                     gap="1rem"
-                    style={{ width: "10%" }}
+                    style={{ width: "10%", marginTop: "1rem" }}
                 >
                     <Typography>Users List</Typography>
 

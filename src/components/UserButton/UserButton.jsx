@@ -43,10 +43,20 @@ const UserButton = ({ user }) => {
                 width: "100%",
                 m: "0 1rem",
                 p: "1rem 1.5rem 1rem 1.5rem",
+                borderRadius: "4px",
+                backgroundColor: "#EF5E41",
+
+                "&:hover": {
+                    backgroundColor: "#F0A370",
+                },
+
+                "&:disabled": {
+                    backgroundColor: "#E7D196",
+                },
             }}
             disabled={included ? true : false}
         >
-            {user.username}
+            {user.username.toUpperCase()}
         </Button>
     );
 };

@@ -30,8 +30,8 @@ const Header = () => {
                         alignItems="center"
                         justifyContent="space-between"
                         style={{
-                            minHeight: "5vh",
-                            backgroundColor: "blue",
+                            height: "5rem",
+                            backgroundColor: "#020122",
                         }}
                     >
                         <Grid
@@ -60,14 +60,14 @@ const Header = () => {
                                 variant="contained"
                                 size="large"
                                 sx={{
-                                    color: "white",
+                                    color: "#020122",
                                     fontSize: "1rem",
                                     m: "1rem 0",
-                                    p: "1rem 3rem 1rem 3rem",
-                                    backgroundColor: "#3a3b50",
+                                    p: "0.5rem 3rem 0.5rem 3rem",
+                                    backgroundColor: "#FC9E4F",
                                     "&:hover": {
-                                        color: "black",
-                                        backgroundColor: "white",
+                                        color: "#020122",
+                                        backgroundColor: "#F0A370",
                                     },
                                 }}
                             >

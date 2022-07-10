@@ -12,10 +12,13 @@ const Chats = () => {
             alignItems="start"
             justifyContent="space-between"
             gap="1rem"
-            style={{ width: "15vw" }}
+            style={{
+                width: "15vw",
+                marginLeft: "-7rem",
+            }}
         >
-            <CreateChatButton />
             <ChatList />
+            <CreateChatButton />
         </Grid>
     );
 };

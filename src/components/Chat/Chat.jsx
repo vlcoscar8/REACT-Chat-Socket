@@ -34,9 +34,10 @@ const Chat = () => {
                     justifyContent="start"
                     gap="1rem"
                     style={{
-                        width: "60%",
-                        height: "90vh",
+                        width: "75%",
+                        height: "95vh",
                         padding: "2rem",
+                        backgroundColor: "#F3F4B3",
                     }}
                 >
                     <ChatTitle chat={chatActive} />
