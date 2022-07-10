@@ -38,7 +38,7 @@ const CreateChatButton = () => {
                 ? userData.chats.concat(chats)
                 : userData.chats;
 
-        chatList && chatList.length >= 3 && setError(true);
+        chatList && chatList.length > 11 && setError(true);
     };
 
     useEffect(() => {
@@ -50,13 +50,13 @@ const CreateChatButton = () => {
             <Button
                 onClick={createChat}
                 sx={{
-                    backgroundColor: "white",
-                    color: "#054DA7",
+                    backgroundColor: "#FF521B",
+                    color: "white",
                     mt: "2rem",
                     width: "100%",
                     "&:hover": {
                         color: "white",
-                        backgroundColor: "#054DA7",
+                        backgroundColor: "#FCA258",
                     },
 
                     "&:disabled": {
@@ -66,7 +66,7 @@ const CreateChatButton = () => {
                 }}
                 disabled={error ? true : false}
             >
-                {error ? "Maximum 3 Groups" : "Create Group"}
+                {error ? "Maximum 10 groups" : "Create chat "}
             </Button>
         </>
     );

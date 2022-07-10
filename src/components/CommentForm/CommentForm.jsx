@@ -81,6 +81,11 @@ const CommentForm = () => {
                     "&:hover": {
                         backgroundColor: "#FF5825",
                     },
+
+                    "&:disabled": {
+                        backgroundColor: "#EFF0BD",
+                        color: "#F0A370",
+                    },
                 }}
                 onClick={submitUserForm}
                 disabled={disabled}

@@ -37,7 +37,7 @@ const Comment = ({ comment }) => {
                     <Typography
                         sx={{
                             width: "50%",
-                            padding: "0.5rem",
+                            padding: "0.5rem 1rem",
                             borderRadius: "0.5rem",
                             backgroundColor:
                                 comment.from[0].username === userData.username
