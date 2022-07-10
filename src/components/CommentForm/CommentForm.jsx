@@ -1,6 +1,6 @@
 import { TextField, Button } from "@mui/joy";
 import { Grid } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../state/context/authContext";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
@@ -14,7 +14,10 @@ const CommentForm = () => {
     const [form, setForm] = useState(INITIAL_STATE);
     const { userData } = useContext(AuthContext);
     const { chatActive } = useSelector((state) => state.chatActive);
+    const { users } = useSelector((state) => state.users);
     const dispatch = useDispatch();
+
+    const [disabled, setDisabled] = useState(false);
 
     const handleChangeForm = (e) => {
         const { name, value } = e.target;
@@ -29,6 +32,12 @@ const CommentForm = () => {
 
         setForm(INITIAL_STATE);
     };
+
+    useEffect(() => {
+        const user = users.find((user) => user.username === userData.username);
+
+        !user ? setDisabled(true) : setDisabled(false);
+    }, [chatActive, users]);
 
     return (
         <Grid
@@ -47,7 +56,9 @@ const CommentForm = () => {
                 onChange={handleChangeForm}
                 sx={{ width: "30vw" }}
             />
-            <Button onClick={submitUserForm}>Send</Button>
+            <Button onClick={submitUserForm} disabled={disabled}>
+                Send
+            </Button>
         </Grid>
     );
 };
