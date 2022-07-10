@@ -43,7 +43,7 @@ const Comments = () => {
             gap="2rem"
             style={{
                 width: "100%",
-                height: "55vh",
+                height: "57vh",
                 padding: "0 2rem",
                 overflowY: "scroll",
                 flexWrap: "nowrap",
