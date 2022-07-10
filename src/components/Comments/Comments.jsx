@@ -4,16 +4,19 @@ import Comment from "../Comment/Comment";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useChatDetail } from "../../customHooks/useChatDetail";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { setReduxStateGetComments } from "../../state/redux/actions/commentsActions";
+import {
+    setReduxStateGetComments,
+    setReduxStatePushComment,
+} from "../../state/redux/actions/commentsActions";
 import shortid from "shortid";
-import { CommentsDisabledTwoTone } from "@mui/icons-material";
+import { useSocket } from "../../customHooks/useSocket";
 
 const Comments = () => {
     const { chatActive } = useSelector((state) => state.chatActive);
     const { comments } = useSelector((state) => state.comments);
     const chatDetail = useChatDetail(chatActive);
     const dispatch = useDispatch();
-
+    const socketReady = useSocket(chatDetail);
     const scrollWindow = useRef(null);
 
     useEffect(() => {
@@ -23,6 +26,11 @@ const Comments = () => {
     useEffect(() => {
         scrollWindow.current.scrollTop = scrollWindow.current.scrollHeight;
     }, [comments]);
+
+    useEffect(() => {
+        chatDetail &&
+            dispatch(setReduxStatePushComment(socketReady, chatDetail.id));
+    }, [socketReady]);
 
     return (
         <Grid

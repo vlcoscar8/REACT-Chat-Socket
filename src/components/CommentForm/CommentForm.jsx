@@ -4,18 +4,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../state/context/authContext";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { setReduxStatePushComment } from "../../state/redux/actions/commentsActions";
+import { environment } from "../../environment/environment";
+import { io } from "socket.io-client";
 
 const INITIAL_STATE = {
     content: "",
 };
+
+const socket = io(`${environment.API_URL}`);
 
 const CommentForm = () => {
     const [form, setForm] = useState(INITIAL_STATE);
     const { userData } = useContext(AuthContext);
     const { chatActive } = useSelector((state) => state.chatActive);
     const { users } = useSelector((state) => state.users);
-    const dispatch = useDispatch();
 
     const [disabled, setDisabled] = useState(false);
 
@@ -28,9 +30,10 @@ const CommentForm = () => {
         e.preventDefault();
 
         const body = { ...form, username: userData.username };
-        dispatch(setReduxStatePushComment(body, chatActive.id));
 
         setForm(INITIAL_STATE);
+
+        socket.emit("new message", body);
     };
 
     useEffect(() => {
