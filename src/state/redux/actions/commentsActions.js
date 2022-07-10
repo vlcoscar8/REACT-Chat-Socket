@@ -24,7 +24,7 @@ export const setReduxStatePushComment = (body, id) => {
         headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin":
-                "https://react-chat-socket-oscar.netlify.app/",
+                "https://react-chat-socket-oscar.netlify.app/home",
             "Access-Control-Request-Method": "POST",
         },
         body: JSON.stringify(body),
