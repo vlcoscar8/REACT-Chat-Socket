@@ -6,6 +6,7 @@ import { Button, Typography } from "@mui/joy";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { setReduxStateDefaultChat } from "../../state/redux/actions/chatActions";
 import { setReduxStateDefaultUser } from "../../state/redux/actions/usersActions";
+import { setReduxStateDefaultComments } from "../../state/redux/actions/commentsActions";
 
 const Header = () => {
     const { dispatch, userLogged } = useContext(AuthContext);
@@ -15,6 +16,7 @@ const Header = () => {
         dispatch(logoutUserFunction(dispatch));
         reduxDispatch(setReduxStateDefaultChat());
         reduxDispatch(setReduxStateDefaultUser());
+        reduxDispatch(setReduxStateDefaultComments());
     };
 
     return (

@@ -5,11 +5,13 @@ import thunk from "redux-thunk";
 import chatReducer from "./reducers/chatReducer";
 import userReducer from "./reducers/userReducer";
 import chatActiveReducer from "./reducers/chatActiveReducer";
+import commentsReducer from "./reducers/commentsReducer";
 
 const rootReducer = combineReducers({
     chats: chatReducer,
     users: userReducer,
     chatActive: chatActiveReducer,
+    comments: commentsReducer,
 });
 
 export const store = configureStore(

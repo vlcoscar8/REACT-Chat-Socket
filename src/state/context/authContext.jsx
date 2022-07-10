@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
                 .then((data) => {
                     setUserData(data);
                     reduxDispatch(setReduxStateChatList(data.chats));
+                    
                 });
     }, [userLogged]);
 

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { setReduxStateActiveChat } from "../../state/redux/actions/chatActiveActions";
 import { setReduxStateChatUsers } from "../../state/redux/actions/usersActions";
+import CommentsBox from "../CommentsBox/CommentsBox";
 
 const Chat = () => {
     const { userData } = useContext(AuthContext);
@@ -35,10 +36,12 @@ const Chat = () => {
                     style={{
                         width: "60%",
                         height: "88vh",
+                        padding: "2rem",
                     }}
                 >
                     <ChatTitle chat={chatActive} />
                     <UsersChat />
+                    <CommentsBox />
                 </Grid>
             )}
         </>
