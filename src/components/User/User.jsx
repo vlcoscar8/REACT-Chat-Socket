@@ -1,7 +1,9 @@
+import { Button } from "@mui/joy";
 import React from "react";
 
 const User = ({ user }) => {
-    return <div>{user.username}</div>;
+    const removeUser = () => {};
+    return <Button onClick={removeUser}>{user.username}</Button>;
 };
 
 export default User;

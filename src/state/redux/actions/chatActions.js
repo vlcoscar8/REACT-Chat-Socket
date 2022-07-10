@@ -1,6 +1,5 @@
 export const GET_CHATS = "GET_CHATS_OK";
 export const PUSH_CHAT = "PUSH_CHAT";
-export const ACTIVE_CHAT = "ACTIVE_CHAT";
 export const DEFAULT_CHAT = "DEFAULT_CHAT";
 
 const actionGetChats = (chats) => ({
@@ -10,11 +9,6 @@ const actionGetChats = (chats) => ({
 
 const actionPushChat = (chat) => ({
     type: PUSH_CHAT,
-    payload: chat,
-});
-
-const actionActiveChat = (chat) => ({
-    type: ACTIVE_CHAT,
     payload: chat,
 });
 
@@ -28,10 +22,6 @@ export const setReduxStateChatList = (chats) => {
 
 export const setReduxStatePushChat = (chat) => {
     return (dispatch) => dispatch(actionPushChat(chat));
-};
-
-export const setReduxStateActiveChat = (chat) => {
-    return (dispatch) => dispatch(actionActiveChat(chat));
 };
 
 export const setReduxStateDefaultChat = () => {

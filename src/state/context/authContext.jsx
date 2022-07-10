@@ -3,6 +3,7 @@ import { authReducer } from "./authReducer";
 import { INITIAL_STATE } from "./authReducer";
 import { environment } from "../../environment/environment";
 import { setReduxStateChatList } from "../redux/actions/chatActions";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
 
 // Create context
 export const AuthContext = React.createContext();
@@ -11,6 +12,7 @@ export const AuthContext = React.createContext();
 export const AuthProvider = ({ children }) => {
     const [userLogged, dispatch] = useReducer(authReducer, INITIAL_STATE);
     const [userData, setUserData] = useState();
+    const reduxDispatch = useDispatch();
 
     useEffect(() => {
         setUserData(null);
@@ -19,7 +21,7 @@ export const AuthProvider = ({ children }) => {
                 .then((res) => res.json())
                 .then((data) => {
                     setUserData(data);
-                    setReduxStateChatList(data.chats);
+                    reduxDispatch(setReduxStateChatList(data.chats));
                 });
     }, [userLogged]);
 

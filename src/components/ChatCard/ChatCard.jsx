@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useChatDetail } from "../../customHooks/useChatDetail";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { setReduxStateActiveChat } from "../../state/redux/actions/chatActions";
+import { setReduxStateActiveChat } from "../../state/redux/actions/chatActiveActions";
 import {
     setReduxStateChatUsers,
     setReduxStateDefaultUser,

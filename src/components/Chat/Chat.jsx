@@ -5,15 +5,21 @@ import ChatTitle from "../ChatTitle/ChatTitle";
 import UsersChat from "../UsersChat/UsersChat";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { setReduxStateActiveChat } from "../../state/redux/actions/chatActions";
+import { setReduxStateActiveChat } from "../../state/redux/actions/chatActiveActions";
+import { setReduxStateChatUsers } from "../../state/redux/actions/usersActions";
 
 const Chat = () => {
     const { userData } = useContext(AuthContext);
     const dispatch = useDispatch();
-    const { chatActive } = useSelector((state) => state.chats);
+    const { chatActive } = useSelector((state) => state.chatActive);
 
     useEffect(() => {
-        userData && dispatch(setReduxStateActiveChat(userData.chats[0]));
+        if (userData) {
+            dispatch(setReduxStateActiveChat(userData.chats[0]));
+
+            userData.chats.length > 0 &&
+                dispatch(setReduxStateChatUsers(userData.chats[0].users));
+        }
     }, [userData]);
 
     return (
@@ -24,7 +30,7 @@ const Chat = () => {
                     spacing={0}
                     direction="column"
                     alignItems="center"
-                    justifyContent="space-between"
+                    justifyContent="start"
                     gap="1rem"
                     style={{
                         width: "60%",
@@ -32,7 +38,7 @@ const Chat = () => {
                     }}
                 >
                     <ChatTitle chat={chatActive} />
-                    <UsersChat chat={chatActive} />
+                    <UsersChat />
                 </Grid>
             )}
         </>

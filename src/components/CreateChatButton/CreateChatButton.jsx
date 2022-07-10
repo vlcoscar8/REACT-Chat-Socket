@@ -4,10 +4,8 @@ import { useDispatch } from "react-redux";
 import { environment } from "../../environment/environment";
 import { AuthContext } from "../../state/context/authContext";
 import { useSelector } from "react-redux/es/exports";
-import {
-    setReduxStateActiveChat,
-    setReduxStatePushChat,
-} from "../../state/redux/actions/chatActions";
+import { setReduxStatePushChat } from "../../state/redux/actions/chatActions";
+import { setReduxStateActiveChat } from "../../state/redux/actions/chatActiveActions";
 
 const CreateChatButton = () => {
     const { userLogged, userData } = useContext(AuthContext);
@@ -40,7 +38,7 @@ const CreateChatButton = () => {
                 ? userData.chats.concat(chats)
                 : userData.chats;
 
-        chatList && chatList.length >= 2 && setError(true);
+        chatList && chatList.length >= 3 && setError(true);
     };
 
     useEffect(() => {

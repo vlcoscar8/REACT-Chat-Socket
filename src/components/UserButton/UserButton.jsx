@@ -7,7 +7,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const UserButton = ({ user }) => {
     const dispatch = useDispatch();
-    const { chatActive } = useSelector((state) => state.chats);
+    const { chatActive } = useSelector((state) => state.chatActive);
     const { users } = useSelector((state) => state.users);
     const [included, setIncluded] = useState(false);
 
