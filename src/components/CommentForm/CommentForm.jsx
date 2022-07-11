@@ -30,7 +30,7 @@ const CommentForm = () => {
         e.preventDefault();
 
         const body = { ...form, username: userData.username };
-        const chatId = chatActive.direction;
+        const chatId = chatActive.id;
         const socketData = {
             body: body,
             chatId: chatId,

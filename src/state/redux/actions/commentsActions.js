@@ -19,6 +19,7 @@ const actionDefaultComments = () => ({
 });
 
 export const setReduxStatePushComment = (body, id) => {
+    console.log(body, id);
     const requestOptions = {
         method: "POST",
         headers: {
