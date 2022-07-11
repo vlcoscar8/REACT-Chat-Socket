@@ -14,7 +14,7 @@ const Chats = () => {
             gap="1rem"
             sx={{
                 width: { xs: "92vw", md: "15vw" },
-                marginLeft: { xs: "92vw", md: "-7rem" },
+                marginLeft: { md: "-7rem" },
             }}
         >
             <ChatList />
