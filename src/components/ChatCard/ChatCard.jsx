@@ -53,9 +53,9 @@ const ChatCard = ({ chat }) => {
                         padding: "1rem 0.5rem",
                         borderRadius: "0.2rem",
                         cursor: "pointer",
-                        backgroundColor: active ? " #FC9E4F" : " #475B6A",
+                        backgroundColor: active ? " #EF5E41" : "#E7D196",
                         "&:hover": {
-                            backgroundColor: "#455D90",
+                            backgroundColor: "#FCA258",
                             transition: "all 0.5s ease",
                         },
                     }}

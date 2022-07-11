@@ -51,13 +51,14 @@ const CreateChatButton = () => {
             <Button
                 onClick={createChat}
                 sx={{
-                    backgroundColor: "#FF521B",
+                    backgroundColor: "#475B6A",
+                    borderRadius: "0.2rem",
                     color: "white",
                     mt: "2rem",
                     width: { xs: "80vw", md: "100%" },
                     "&:hover": {
                         color: "white",
-                        backgroundColor: "#FCA258",
+                        backgroundColor: "#455D90",
                     },
 
                     "&:disabled": {
