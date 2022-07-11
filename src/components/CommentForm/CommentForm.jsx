@@ -30,10 +30,15 @@ const CommentForm = () => {
         e.preventDefault();
 
         const body = { ...form, username: userData.username };
+        const chatId = chatActive.direction;
+        const socketData = {
+            body: body,
+            chatId: chatId,
+        };
 
         setForm(INITIAL_STATE);
 
-        socket.emit("new message", body);
+        socket.emit("new message", socketData);
     };
 
     useEffect(() => {

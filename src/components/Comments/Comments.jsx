@@ -16,7 +16,7 @@ const Comments = () => {
     const { comments } = useSelector((state) => state.comments);
     const chatDetail = useChatDetail(chatActive);
     const dispatch = useDispatch();
-    const socketReady = useSocket(chatDetail);
+    const socketData = useSocket();
     const scrollWindow = useRef(null);
 
     useEffect(() => {
@@ -29,8 +29,10 @@ const Comments = () => {
 
     useEffect(() => {
         chatDetail &&
-            dispatch(setReduxStatePushComment(socketReady, chatDetail.id));
-    }, [socketReady]);
+            dispatch(
+                setReduxStatePushComment(socketData.body, socketData.chatId)
+            );
+    }, [socketData]);
 
     return (
         <Grid

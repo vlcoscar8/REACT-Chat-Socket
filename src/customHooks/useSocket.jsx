@@ -5,11 +5,11 @@ import { environment } from "../environment/environment";
 const socket = io(`${environment.API_URL}`);
 
 export const useSocket = () => {
-    const [socketReady, setSocketReady] = useState();
+    const [socketData, setSocketData] = useState();
 
-    socket.on("new message", (body) => {
-        setSocketReady(body);
+    socket.on("new message", (data) => {
+        setSocketData(data);
     });
 
-    return socketReady;
+    return socketData;
 };
