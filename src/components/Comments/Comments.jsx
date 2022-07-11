@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import Comment from "../Comment/Comment";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useChatDetail } from "../../customHooks/useChatDetail";
@@ -10,11 +10,13 @@ import {
 } from "../../state/redux/actions/commentsActions";
 import shortid from "shortid";
 import { useSocket } from "../../customHooks/useSocket";
+import { AuthContext } from "../../state/context/authContext";
 
 const Comments = () => {
     const { chatActive } = useSelector((state) => state.chatActive);
     const { comments } = useSelector((state) => state.comments);
     const chatDetail = useChatDetail(chatActive);
+    const { userData } = useContext(AuthContext);
     const dispatch = useDispatch();
     const socketData = useSocket();
     const scrollWindow = useRef(null);
@@ -30,9 +32,7 @@ const Comments = () => {
     useEffect(() => {
         socketData &&
             socketData.chatId === chatActive.id &&
-            dispatch(
-                setReduxStatePushComment(socketData.body, socketData.chatId)
-            );
+            dispatch(setReduxStatePushComment(socketData.data));
     }, [socketData]);
 
     return (

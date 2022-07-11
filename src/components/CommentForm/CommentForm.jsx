@@ -6,6 +6,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { environment } from "../../environment/environment";
 import { io } from "socket.io-client";
+import { pushComment } from "../../state/services/pushComment";
 
 const INITIAL_STATE = {
     content: "",
@@ -26,13 +27,14 @@ const CommentForm = () => {
         setForm({ ...form, [name]: value });
     };
 
-    const submitUserForm = (e) => {
+    const submitUserForm = async (e) => {
         e.preventDefault();
 
         const body = { ...form, username: userData.username };
         const chatId = chatActive.id;
+
         const socketData = {
-            body: body,
+            data: await pushComment(body, chatId),
             chatId: chatId,
         };
 

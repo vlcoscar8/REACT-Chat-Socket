@@ -18,35 +18,9 @@ const actionDefaultComments = () => ({
     type: DEFAULT_CHAT,
 });
 
-export const setReduxStatePushComment = (body, id) => {
-    console.log("disparador");
-    const requestOptions = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin":
-                "https://react-chat-socket-oscar.netlify.app/home",
-            "Access-Control-Request-Method": "POST",
-        },
-        body: JSON.stringify(body),
-    };
-
-    return async (dispatch) => {
-        try {
-            const response = await fetch(
-                `${environment.API_URL}/chat/add/comment/${id}`,
-                requestOptions
-            );
-
-            const data = await response.json();
-
-            dispatch(
-                actionPushComment(data.comments[data.comments.length - 1])
-            );
-        } catch (error) {
-            console.log(error);
-        }
-    };
+export const setReduxStatePushComment = (data) => {
+    return (dispatch) =>
+        dispatch(actionPushComment(data.comments[data.comments.length - 1]));
 };
 
 export const setReduxStateGetComments = (comments) => {
