@@ -32,7 +32,9 @@ const Comments = () => {
     useEffect(() => {
         socketData &&
             socketData.chatId === chatActive.id &&
-            dispatch(setReduxStatePushComment(socketData.data));
+            dispatch(
+                setReduxStatePushComment(socketData.body, socketData.chatId)
+            );
     }, [socketData]);
 
     return (

@@ -27,14 +27,13 @@ const CommentForm = () => {
         setForm({ ...form, [name]: value });
     };
 
-    const submitUserForm = async (e) => {
+    const submitUserForm = (e) => {
         e.preventDefault();
 
         const body = { ...form, username: userData.username };
         const chatId = chatActive.id;
-
         const socketData = {
-            data: await pushComment(body, chatId),
+            body: body,
             chatId: chatId,
         };
 
