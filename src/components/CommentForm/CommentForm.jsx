@@ -52,7 +52,7 @@ const CommentForm = () => {
             gap="1rem"
             sx={{
                 backgroundColor: "#E7D196",
-                width: "100%",
+                width: { md: "100%" },
                 padding: "1rem",
                 boxSizing: "border-box",
             }}
@@ -64,7 +64,7 @@ const CommentForm = () => {
                 value={form.content}
                 onChange={handleChangeForm}
                 sx={{
-                    width: "82%",
+                    width: { md: "82%" },
                     borderRadius: "7px",
 
                     "&:focus": {
@@ -76,7 +76,7 @@ const CommentForm = () => {
                 sx={{
                     backgroundColor: "#EF5E41",
                     borderRadius: "7px",
-                    width: "15%",
+                    width: { xs: "17vw", md: "15%" },
 
                     "&:hover": {
                         backgroundColor: "#FF5825",

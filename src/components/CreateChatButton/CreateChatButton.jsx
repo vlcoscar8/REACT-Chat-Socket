@@ -53,7 +53,7 @@ const CreateChatButton = () => {
                     backgroundColor: "#FF521B",
                     color: "white",
                     mt: "2rem",
-                    width: "100%",
+                    width: { xs: "80vw", md: "100%" },
                     "&:hover": {
                         color: "white",
                         backgroundColor: "#FCA258",

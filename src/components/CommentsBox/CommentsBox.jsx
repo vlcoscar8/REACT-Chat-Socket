@@ -12,8 +12,8 @@ const CommentsBox = () => {
             alignItems="center"
             justifyContent="space-between"
             gap="1rem"
-            style={{
-                padding: "0 1rem 1rem 1rem",
+            sx={{
+                padding: { xs: "0.2rem", md: "0 1rem 1rem 1rem" },
                 height: "84%",
                 backgroundColor: "#EFF0BD",
             }}

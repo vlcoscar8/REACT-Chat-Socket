@@ -23,10 +23,13 @@ const ChatList = () => {
                 <Grid
                     container
                     spacing={0}
-                    direction="column"
+                    direction={{ xs: "row", md: "column" }}
                     alignItems="center"
                     justifyContent="center"
                     gap="1rem"
+                    sx={{
+                        width: { md: "15rem" },
+                    }}
                 >
                     {chatList.length > 0 ? (
                         chatList.map((chat) => (

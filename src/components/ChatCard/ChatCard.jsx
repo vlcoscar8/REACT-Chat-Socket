@@ -47,6 +47,7 @@ const ChatCard = ({ chat }) => {
                     justifyContent="center"
                     gap="1rem"
                     sx={{
+                        width: { xs: "5rem", md: "100%" },
                         minHeight: "8vh",
                         marginTop: "2rem",
                         padding: "1rem 0.5rem",

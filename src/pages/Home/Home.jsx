@@ -9,11 +9,11 @@ const Home = () => {
         <Grid
             container
             spacing={0}
-            direction="row"
-            alignItems="start"
+            direction={{ xs: "column", md: "row" }}
+            alignItems={{ xs: "center", md: "start" }}
             justifyContent="space-between"
             gap="1rem"
-            style={{ minHeight: "85vh", width: "80vw" }}
+            style={{ minHeight: "85vh", width: { xs: "100vw", md: "80vw" } }}
         >
             <Chats />
             <Chat />

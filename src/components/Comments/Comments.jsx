@@ -41,10 +41,10 @@ const Comments = () => {
             alignItems="center"
             justifyContent="start"
             gap="2rem"
-            style={{
+            sx={{
                 width: "100%",
                 height: "57vh",
-                padding: "0 2rem",
+                padding: { xs: "0 0.8rem", md: "0 2rem" },
                 overflowY: "scroll",
                 flexWrap: "nowrap",
             }}

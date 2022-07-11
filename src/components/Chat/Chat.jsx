@@ -33,10 +33,10 @@ const Chat = () => {
                     alignItems="center"
                     justifyContent="start"
                     gap="1rem"
-                    style={{
-                        width: "75%",
+                    sx={{
+                        width: { md: "75%" },
                         height: "95vh",
-                        padding: "2rem",
+                        padding: { xs: "2rem 0.3rem", md: "2rem" },
                         backgroundColor: "#F3F4B3",
                     }}
                 >

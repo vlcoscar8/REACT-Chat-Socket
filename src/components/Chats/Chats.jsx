@@ -9,12 +9,12 @@ const Chats = () => {
             container
             spacing={0}
             direction="column"
-            alignItems="start"
+            alignItems={{ xs: "center", md: "start" }}
             justifyContent="space-between"
             gap="1rem"
-            style={{
-                width: "15vw",
-                marginLeft: "-7rem",
+            sx={{
+                width: { xs: "92vw", md: "15vw" },
+                marginLeft: { xs: "92vw", md: "-7rem" },
             }}
         >
             <ChatList />

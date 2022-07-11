@@ -19,13 +19,22 @@ const UsersList = () => {
                 <Grid
                     container
                     spacing={0}
-                    direction="column"
+                    direction={{ xs: "row", md: "column" }}
                     alignItems="center"
-                    justifyContent="start"
+                    justifyContent={{ xs: "center", md: "start" }}
                     gap="1rem"
-                    style={{ width: "10%", marginTop: "1rem" }}
+                    sx={{
+                        width: { xs: "100vw", md: "10%" },
+                        marginTop: "1rem",
+                    }}
                 >
-                    <Typography>Users List</Typography>
+                    <Typography
+                        sx={{
+                            textAlign: "center",
+                        }}
+                    >
+                        Users List
+                    </Typography>
 
                     {users.map((user) => (
                         <UserButton user={user} key={user.email} />
