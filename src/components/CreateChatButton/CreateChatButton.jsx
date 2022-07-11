@@ -14,6 +14,7 @@ const CreateChatButton = () => {
     const dispatch = useDispatch();
 
     const createChat = async () => {
+        console.log("create chat");
         const response = await fetch(
             `${environment.API_URL}/chat/create/${userLogged.userId}`,
             {

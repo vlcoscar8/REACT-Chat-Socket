@@ -2,7 +2,10 @@ import React, { useEffect, useReducer, useState } from "react";
 import { authReducer } from "./authReducer";
 import { INITIAL_STATE } from "./authReducer";
 import { environment } from "../../environment/environment";
-import { setReduxStateChatList } from "../redux/actions/chatActions";
+import {
+    setReduxStateChatList,
+    setReduxStateDefaultChat,
+} from "../redux/actions/chatActions";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 
 // Create context
@@ -21,8 +24,8 @@ export const AuthProvider = ({ children }) => {
                 .then((res) => res.json())
                 .then((data) => {
                     setUserData(data);
+                    reduxDispatch(setReduxStateDefaultChat());
                     reduxDispatch(setReduxStateChatList(data.chats));
-                    
                 });
     }, [userLogged]);
 

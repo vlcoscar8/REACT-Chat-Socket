@@ -3,10 +3,8 @@ import { Grid } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../state/context/authContext";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { environment } from "../../environment/environment";
 import { io } from "socket.io-client";
-import { pushComment } from "../../state/services/pushComment";
 
 const INITIAL_STATE = {
     content: "",

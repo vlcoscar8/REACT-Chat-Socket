@@ -30,10 +30,17 @@ const Comments = () => {
     }, [comments]);
 
     useEffect(() => {
+        if (socketData) {
+            console.log(socketData);
+        }
         socketData &&
             socketData.chatId === chatActive.id &&
             dispatch(
-                setReduxStatePushComment(socketData.body, socketData.chatId)
+                setReduxStatePushComment(
+                    socketData.body,
+                    socketData.chatId,
+                    userData
+                )
             );
     }, [socketData]);
 

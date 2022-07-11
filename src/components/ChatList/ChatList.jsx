@@ -12,6 +12,18 @@ const ChatList = () => {
 
     useEffect(() => {
         if (userData && chats) {
+            for (let i = 0; i < userData.length; i++) {
+                if (userData[i].id === userData[i + 1].id) {
+                    userData.splice(i + 1, 1);
+                }
+            }
+
+            for (let i = 0; i < chats.length; i++) {
+                if (chats[i + 1] && chats[i].id === chats[i + 1].id) {
+                    chats.splice(i + 1, 1);
+                }
+            }
+
             const chatList = chats.length > 0 ? chats : userData.chats;
             setChatList(chatList);
         }
