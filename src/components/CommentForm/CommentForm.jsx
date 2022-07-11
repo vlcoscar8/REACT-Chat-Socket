@@ -38,7 +38,7 @@ const CommentForm = () => {
 
         setForm(INITIAL_STATE);
 
-        socket.emit("new message", socketData);
+        socket.emit("post to database", socketData);
     };
 
     useEffect(() => {

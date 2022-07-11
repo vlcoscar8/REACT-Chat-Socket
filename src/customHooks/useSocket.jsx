@@ -7,7 +7,7 @@ const socket = io(`${environment.API_URL}`);
 export const useSocket = () => {
     const [socketData, setSocketData] = useState();
 
-    socket.on("new message", (data) => {
+    socket.on("send to client", (data) => {
         setSocketData(data);
     });
 
