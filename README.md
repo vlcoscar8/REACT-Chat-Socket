@@ -6,4 +6,5 @@ The project is a real time chat web developed with react and material UI and usi
 
 Here is a picture of the web:
 
-image.png
+![image](https://user-images.githubusercontent.com/94851836/178213424-aded29ef-f8d5-4841-b95c-0bcabeda006f.png)
+
